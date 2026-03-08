@@ -1,0 +1,14 @@
+{% extends 'collection/base.html' %}
+
+{% block title %}Omat tiedot | DiscGolfCollection{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Omat tiedot</h1>
+    <p><strong>Kayttajatunnus:</strong> {{ request.user.username }}</p>
+    <p><strong>Nimi:</strong> {{ request.user.get_full_name|default:'Ei asetettu' }}</p>
+    <p><strong>Sahkoposti:</strong> {{ request.user.email|default:'Ei asetettu' }}</p>
+    <p><strong>Kiekkoja kokoelmassa:</strong> {{ disc_total }}</p>
+    <p><strong>Kiekkoja bagissa:</strong> {{ bag_total }}</p>
+</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'collection/base.html' %}
+
+{% block title %}Omat kiekot | DiscGolfCollection{% endblock %}
+
+{% block content %}
+<section class="card">
+    <div class="row-between">
+        <h1>Omat kiekot</h1>
+        <a class="button-link" href="{% url 'disc_create' %}">Lisaa kiekko</a>
+    </div>
+
+    {% if discs %}
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Nimi</th>
+                    <th>Valmistaja</th>
+                    <th>Muovi</th>
+                    <th>Paino</th>
+                    <th>Vari</th>
+                    <th>Hankittu</th>
+                    <th>Bagissa</th>
+                    <th>Toiminnot</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for disc in discs %}
+                    <tr>
+                        <td data-label="Nimi">{{ disc.name }}</td>
+                        <td data-label="Valmistaja">{{ disc.manufacturer }}</td>
+                        <td data-label="Muovi">{{ disc.plastic }}</td>
+                        <td data-label="Paino">{{ disc.weight }} g</td>
+                        <td data-label="Vari">{{ disc.color }}</td>
+                        <td data-label="Hankittu">{{ disc.acquired_at|date:'Y-m-d H:i' }}</td>
+                        <td data-label="Bagissa">{% if disc.id in bag_disc_ids %}Kyla{% else %}Ei{% endif %}</td>
+                        <td data-label="Toiminnot">
+                            <a href="{% url 'disc_update' disc.id %}">Muokkaa</a>
+                            |
+                            <a href="{% url 'disc_delete' disc.id %}">Poista</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Kokoelmasi on tyhja. Lisaa ensimmainen kiekko.</p>
+    {% endif %}
+</section>
+{% endblock %}

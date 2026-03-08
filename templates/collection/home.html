@@ -1,0 +1,42 @@
+{% extends 'collection/base.html' %}
+
+{% block title %}Etusivu | DiscGolfCollection{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Disc golf -pelaajat ja kokoelmat</h1>
+    <p>Tutustu pelaajien kiekkokokoelmiin ja bageihin.</p>
+</section>
+
+<section class="card">
+    <h2>Kayttajat</h2>
+    {% if players %}
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Nimi</th>
+                    <th>Kiekkoja</th>
+                    <th>Bagissa</th>
+                    <th>Linkit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                    <tr>
+                        <td data-label="Nimi">{{ player.get_full_name|default:player.username }}</td>
+                        <td data-label="Kiekkoja">{{ player.disc_total }}</td>
+                        <td data-label="Bagissa">{{ player.bag_total }}</td>
+                        <td data-label="Linkit">
+                            <a href="{% url 'player_collection' player.username %}">Kokoelma</a>
+                            |
+                            <a href="{% url 'player_bag' player.username %}">In my Bag</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Kayttajia ei loydy viela.</p>
+    {% endif %}
+</section>
+{% endblock %}

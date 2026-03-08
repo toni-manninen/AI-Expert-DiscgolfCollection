@@ -1,0 +1,34 @@
+{% extends 'collection/base.html' %}
+
+{% block title %}{{ player.username }} bag | DiscGolfCollection{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>{{ player.get_full_name|default:player.username }} - In my Bag</h1>
+
+    {% if bag_items %}
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Kiekko</th>
+                    <th>Valmistaja</th>
+                    <th>Muovi</th>
+                    <th>Paino</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in bag_items %}
+                    <tr>
+                        <td data-label="Kiekko">{{ item.disc.name }}</td>
+                        <td data-label="Valmistaja">{{ item.disc.manufacturer }}</td>
+                        <td data-label="Muovi">{{ item.disc.plastic }}</td>
+                        <td data-label="Paino">{{ item.disc.weight }} g</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Taman pelaajan bagi on tyhja.</p>
+    {% endif %}
+</section>
+{% endblock %}

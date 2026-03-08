@@ -1,0 +1,14 @@
+{% extends 'collection/base.html' %}
+
+{% block title %}Rekisteroidy | DiscGolfCollection{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+    <h1>Rekisteroidy</h1>
+    <form method="post" class="form-grid">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Luo tunnus</button>
+    </form>
+</section>
+{% endblock %}

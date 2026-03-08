@@ -1,0 +1,15 @@
+{% extends 'collection/base.html' %}
+
+{% block title %}Poista kiekko | DiscGolfCollection{% endblock %}
+
+{% block content %}
+<section class="card narrow">
+    <h1>Poista kiekko</h1>
+    <p>Haluatko varmasti poistaa kiekon <strong>{{ disc.name }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="danger">Poista</button>
+        <a class="button-link secondary" href="{% url 'my_discs' %}">Peruuta</a>
+    </form>
+</section>
+{% endblock %}

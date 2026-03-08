@@ -1,0 +1,36 @@
+{% extends 'collection/base.html' %}
+
+{% block title %}{{ player.username }} kokoelma | DiscGolfCollection{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>{{ player.get_full_name|default:player.username }} - Kokoelma</h1>
+
+    {% if discs %}
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Nimi</th>
+                    <th>Valmistaja</th>
+                    <th>Muovi</th>
+                    <th>Paino</th>
+                    <th>Vari</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for disc in discs %}
+                    <tr>
+                        <td data-label="Nimi">{{ disc.name }}</td>
+                        <td data-label="Valmistaja">{{ disc.manufacturer }}</td>
+                        <td data-label="Muovi">{{ disc.plastic }}</td>
+                        <td data-label="Paino">{{ disc.weight }} g</td>
+                        <td data-label="Vari">{{ disc.color }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Talla pelaajalla ei ole viela kiekkoja.</p>
+    {% endif %}
+</section>
+{% endblock %}
