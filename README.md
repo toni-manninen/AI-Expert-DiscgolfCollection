@@ -151,7 +151,7 @@ Ohjeet on kirjoitettu Windows PowerShell -ymparistolle.
 1. Siirry projektin juureen:
 
 ```powershell
-cd c:\projektit\python\DiscGolfCollection\DiscgolfCollection
+cd <projekti kansio>\DiscgolfCollection
 ```
 
 2. Luo ja aktivoi virtuaaliymparisto:
@@ -272,7 +272,7 @@ Nykyasetukset ovat kehityskayttoon. Ennen tuotantoa tee ainakin seuraavat muutok
 
 - Sovellus kayttaa oletuksena SQLite-tietokantaa.
 - Kuvakentta (`ImageField`) vaatii toimivan Pillow-asennuksen.
-- Python 3.14 + Pillow-yhteensopivuudessa voi ilmeta `_imaging`-ongelma, joka aiheuttaa Django system check -virheen `fields.E210` testien tai komentojen yhteydessa.
+- Python 3.14 + Pillow-yhteensopivuudessa voi ilmetä `_imaging`-ongelma, joka aiheuttaa Django system check -virheen `fields.E210` testien tai komentojen yhteydessa.
 
 Jos kohtaat `fields.E210`-virheen:
 
